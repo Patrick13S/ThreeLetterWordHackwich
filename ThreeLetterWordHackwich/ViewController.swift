@@ -48,10 +48,27 @@ class ViewController: UIViewController
         }
         
         counter += 1
-    
-        
+        if counter == 26 {
+        counter = resetCounter()
+        }
+        func getAndSetCurrentLetter() {
+        currentLetter = letters[counter]
+        currentLetterLabel.text = currentLetter
+        }
+        getAndSetCurrentLetter()
         
     }
-    
+    func resetCounter () -> Int {
+    let alert = UIAlertController(title: "Resetting Counter", message: nil, preferredStyle: .alert)
+    let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
+    for label in self.wordLabels {
+    label.text = "?"
+    }
+    }
+    alert.addAction(okAction)
+    present(alert, animated: true, completion: nil)
+    return 0
+    }
 }
+
 
